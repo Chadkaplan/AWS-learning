@@ -1,0 +1,15 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  Bucket: chadchallengebucket
+  Events: s3:ObjectCreated:*
+  NamedLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Runtime: nodejs12.x
+      CodeUri: ./src
+      Handler: handler.chadhandler
+  another-unique-chad-bucket:
+    Type: AWS::S3:Bucket
+    Properties:
+      BucketName: another-unique-chad-bucket1
